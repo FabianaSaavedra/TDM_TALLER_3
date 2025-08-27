@@ -7,14 +7,21 @@ export async function fetchPokemon(id){
         const data = await res.json();
 
         //Extraer los tipos
-        const Types = data.types.map(t => t.type.name);
+        const types = data.types.map(t => t.type.name);
+        //Extraer las habilidades 
+        const abilities = data.abilities.map(a => a.ability.name);
 
+        //Extraer las estadisticas
+        const stats = data.stats.map(s => ({
+            stat: s.stat.name,
+            base: s.base_stat
+}));
         //Crear instancia de Pokemon 
         return new Pokemon(
             data.id,
-            data,name,
+            data.name,
             types,
-            data.sprites,other["official-artwork"].front_default
+            data.sprites.other["official-artwork"].front_default
         );
     } catch (error) {
         console.error(error);
@@ -22,11 +29,3 @@ export async function fetchPokemon(id){
     }
 } 
 
-//Extraer las habilidades 
-const abilities = data.abilities.map(a => a.ability.name);
-
-//Extraer las estadisticas
-const stats = data.stats.map(s => ({
-    stat: s.stat.name,
-    base: s.base_stat
-}));
