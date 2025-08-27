@@ -10,12 +10,12 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(238, 232, 232, 0.1);
     border-radius: 20px;
     padding: 20px;
     text-align: center;
     width: 300px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 204, 255, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -24,11 +24,11 @@ body {
 }
 
 .card img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 2px solid #0501ff;
     margin-bottom: 16px;
 }
 
@@ -43,7 +43,7 @@ h2 {
 }
 
 button {
-    background: #ff6f61;
+    background: #0501ff;
     border: none;
     padding: 10px 20px;
     border-radius: 12px;
@@ -54,11 +54,17 @@ button {
 }
 
 button:hover {
-    background: #ff3b2e;
+    background: #080686;
+}
+
+.type{
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin: 0px 5px;
 }
 
 .type.normal { background: #bdbdbd; color: #000; }
-.type.electric { background: #f7d02c; color: #000; }
+.type.electric { background: #f7d02c; color: #000;}
 .type.fire { background: #ee8130; }
 .type.ground { background: #833900; }
 .type.rock { background: #e9d45f; color: #000; }
