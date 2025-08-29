@@ -1,29 +1,34 @@
-// Mostrar Pokémon en la card principal
 export function showPokemon(pokemon) {
     if (!pokemon) return;
 
     // Datos del Pokémon
-    document.getElementById("pokemon-img").src = pokemon.sprite;
+    const img = document.getElementById("pokemon-img");
+    if (img) {
+        img.src = pokemon.sprite;
+        img.onclick = () => showModal(pokemon); // Asignar evento solo si el elemento existe
+    }
+
     document.getElementById("pokemon-name").textContent = capitalize(pokemon.name);
     document.getElementById("pokemon-id").textContent = "#" + pokemon.id.toString().padStart(3, "0");
 
     // Tipos
     const typesDiv = document.querySelector(".types");
-    typesDiv.innerHTML = "";
-    pokemon.types.forEach(t => {
-        const span = document.createElement("span");
-        span.classList.add("type", t);
-        span.textContent = capitalize(t);
-        typesDiv.appendChild(span);
-    });
-
-    // Evento para abrir modal
-    document.querySelector(".pokemon-img").onclick = () => showModal(pokemon);
+    if (typesDiv) {
+        typesDiv.innerHTML = "";
+        pokemon.types.forEach(t => {
+            const span = document.createElement("span");
+            span.classList.add("type", t);
+            span.textContent = capitalize(t);
+            typesDiv.appendChild(span);
+        });
+    }
 }
 
 // Mostrar modal con detalles
 export function showModal(pokemon) {
     const modal = document.querySelector(".modal");
+    if (!modal) return;
+
     modal.classList.remove("hidden");
 
     // Datos principales
@@ -32,42 +37,47 @@ export function showModal(pokemon) {
     document.getElementById("modal-id").textContent = "#" + pokemon.id.toString().padStart(3, "0");
 
     // Altura y peso
-    document.getElementById("modal-height").textContent = pokemon.height + " m";
-    document.getElementById("modal-weight").textContent = pokemon.weight + " kg";
+    document.getElementById("modal-height").textContent = pokemon.height;
+    document.getElementById("modal-weight").textContent = pokemon.weight;
 
-    // Habilidades
-    const abilitiesDiv = document.querySelector(".abilities");
-    abilitiesDiv.innerHTML = "";
-    pokemon.abilities.forEach(a => {
-        const li = document.createElement("li");
-        li.textContent = capitalize(a);
-        abilitiesDiv.appendChild(li);
-    });
+    // Habilidades (usando span con ID, no clase)
+    const abilitiesSpan = document.getElementById("modal-abilities");
+    if (abilitiesSpan) {
+        abilitiesSpan.innerHTML = "";
+        abilitiesSpan.textContent = pokemon.abilities.map(capitalize).join(", ");
+    }
 
-    // Estadísticas
-    const statsDiv = document.querySelector(".stats");
-    statsDiv.innerHTML = "";
-    pokemon.stats.forEach(s => {
-        const statRow = document.createElement("div");
-        statRow.classList.add("stat");
+    // Estadísticas (usando id="modal-stats" en lugar de clase ".stats")
+    const statsDiv = document.getElementById("modal-stats");
+    if (statsDiv) {
+        statsDiv.innerHTML = "";
+        pokemon.stats.forEach(s => {
+            const statRow = document.createElement("div");
+            statRow.classList.add("stat");
 
-        const statName = document.createElement("span");
-        statName.textContent = capitalize(s.stat);
+            const statName = document.createElement("span");
+            statName.textContent = capitalize(s.stat);
 
-        const statValue = document.createElement("span");
-        statValue.textContent = s.base;
+            const statValue = document.createElement("span");
+            statValue.textContent = s.base;
 
-        statRow.appendChild(statName);
-        statRow.appendChild(statValue);
-        statsDiv.appendChild(statRow);
-    });
+            statRow.appendChild(statName);
+            statRow.appendChild(statValue);
+            statsDiv.appendChild(statRow);
+        });
+    }
 
     // Botón cerrar
-    document.querySelector(".close-modal").onclick = () => {
-        modal.classList.add("hidden");
-    };
+    const closeBtn = document.getElementById("close-modal");
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            modal.classList.add("hidden");
+        };
+    }
 }
 
+// Función para capitalizar palabras
 function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
+

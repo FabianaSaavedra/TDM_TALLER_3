@@ -51,6 +51,9 @@ h2 {
     margin-top: 20px;
 }
 
+#pokemon-img{
+    cursor: pointer;
+}
 button {
     background: #ff00cc;
     border: none;
@@ -64,6 +67,69 @@ button {
 
 button:hover {
     background: #7e0465;
+}
+.modal {
+    display: flex;
+    background: #ffffff ;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: centerl;
+    width: 300px;
+    overflow-y: 100%;
+    box-shadow: 0 8px 20px rgb(255, 0, 221);
+    transition: transform 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+}
+
+.modal:not(.hidden){
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content{
+  position:relative;
+  width: min(720px, 96vw);
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 18px 26px;
+  max-height: 90vh;            /* <— límite de alto del contenido */
+  overflow: auto;              /* <— scroll cuando sea necesario */
+  border: 10px solid #041457; 
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.5);
+  background: #041457;
+  max-height: 94vh;            /* <— quepa en la pantalla */
+  overflow: hidden; 
+}
+
+.modal-frame{
+  border: 10px solid #041457; 
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.5);
+  background: #041457;
+  max-height: 94vh;            /* <— quepa en la pantalla */
+  overflow: hidden;            /* ocultar desborde del marco */
+}
+
+.modal-info {
+    display: flex;
+    background: #ffffff ;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: centerl;
+    width: 300px;
+    overflow-y: 100%;
+    box-shadow: 0 8px 20px rgb(255, 0, 221);
+    transition: transform 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
 }
 
 .type{
