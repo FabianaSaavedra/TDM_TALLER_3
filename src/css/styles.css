@@ -19,12 +19,12 @@ body {
 }
 
 .card {
-    background: #fff ;
+    background: #ffffff ;
     border-radius: 20px;
     padding: 20px;
     text-align: center;
     width: 300px;
-    box-shadow: 0 8px 20px rgba(0, 255, 251, 0.3);
+    box-shadow: 0 8px 20px rgb(255, 0, 221);
     transition: transform 0.3s ease;
 }
 
