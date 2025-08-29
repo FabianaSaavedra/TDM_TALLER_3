@@ -1,7 +1,9 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    color: #fff;
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #000;
+    background: linear-gradient(270deg, #ff009d, #8400ff, #cc4e00, #3d02ff);
+    background-size: 600% 600%;
+    animation: fireBackground 10s ease infinite;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,13 +11,20 @@ body {
     margin: 0;
 }
 
+/* Animación del gradiente */
+@keyframes fireBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .card {
-    background: rgba(238, 232, 232, 0.1);
+    background: #fff ;
     border-radius: 20px;
     padding: 20px;
     text-align: center;
     width: 300px;
-    box-shadow: 0 8px 20px rgba(0, 204, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 255, 251, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -28,7 +37,7 @@ body {
     height: 250px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid #0501ff;
+    border: 3px solid #ff00cc;
     margin-bottom: 16px;
 }
 
@@ -43,7 +52,7 @@ h2 {
 }
 
 button {
-    background: #0501ff;
+    background: #ff00cc;
     border: none;
     padding: 10px 20px;
     border-radius: 12px;
@@ -54,11 +63,11 @@ button {
 }
 
 button:hover {
-    background: #080686;
+    background: #7e0465;
 }
 
 .type{
-    padding: 6px 10px;
+    padding: 4px 10px;
     border-radius: 20px;
     margin: 0px 5px;
 }
